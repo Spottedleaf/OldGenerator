@@ -54,7 +54,7 @@ public final class LegacyUtil173 {
         NON_BUILDABLE_MATERIALS.add(Material.RED_MUSHROOM);
         NON_BUILDABLE_MATERIALS.add(Material.BROWN_MUSHROOM);
         NON_BUILDABLE_MATERIALS.add(Material.DEAD_BUSH);
-        NON_BUILDABLE_MATERIALS.add(Material.GRASS);
+        NON_BUILDABLE_MATERIALS.add(Material.SHORT_GRASS);
         NON_BUILDABLE_MATERIALS.add(Material.FERN);
         NON_BUILDABLE_MATERIALS.addAll(BlockConstants.SAPLINGS);
         NON_BUILDABLE_MATERIALS.add(Material.WHEAT);
@@ -89,7 +89,7 @@ public final class LegacyUtil173 {
         NOT_Block_b.addAll(BlockConstants.FLOWERS);
         NOT_Block_b.add(Material.WHEAT);
         NOT_Block_b.add(Material.DEAD_BUSH);
-        NOT_Block_b.add(Material.GRASS);
+        NOT_Block_b.add(Material.SHORT_GRASS);
         NOT_Block_b.add(Material.FERN);
         NOT_Block_b.add(Material.RED_MUSHROOM);
         NOT_Block_b.add(Material.BROWN_MUSHROOM);
@@ -176,8 +176,8 @@ public final class LegacyUtil173 {
         BlockFire_a.put(Material.TNT, 15);
         BlockFire_b.put(Material.TNT, 100);
 
-        BlockFire_a.put(Material.GRASS, 60);
-        BlockFire_b.put(Material.GRASS, 100);
+        BlockFire_a.put(Material.SHORT_GRASS, 60);
+        BlockFire_b.put(Material.SHORT_GRASS, 100);
         BlockFire_a.put(Material.FERN, 60);
         BlockFire_b.put(Material.FERN, 100);
 
@@ -206,7 +206,7 @@ public final class LegacyUtil173 {
         NOT_Block_a.addAll(BlockConstants.FLOWERS);
         NOT_Block_a.add(Material.WHEAT);
         NOT_Block_a.add(Material.DEAD_BUSH);
-        NOT_Block_a.add(Material.GRASS);
+        NOT_Block_a.add(Material.SHORT_GRASS);
         NOT_Block_a.add(Material.FERN);
         NOT_Block_a.add(Material.RED_MUSHROOM);
         NOT_Block_a.add(Material.BROWN_MUSHROOM);
