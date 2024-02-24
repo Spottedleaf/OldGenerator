@@ -43,7 +43,7 @@ public class WorldGenPumpkin173 extends WorldGenerator173 {
             int j1 = centerY + random.nextInt(4) - random.nextInt(4);
             int k1 = centerZ + random.nextInt(8) - random.nextInt(8);
 
-            if (BlockConstants.isAir(world.getType(i1, j1, k1)) && world.getType(i1, j1 - 1, k1) == Material.GRASS_BLOCK && LegacyUtil173.Block_canPlace(world, i1, j1, k1, Material.PUMPKIN)) {
+            if (BlockConstants.isAir(world.getType(i1, j1, k1)) && world.getType(i1, j1 - 1, k1) == Material.GRASS_BLOCK && LegacyUtil173.Block_canPlace(world, i1, j1, k1, Material.CARVED_PUMPKIN)) {
                 world.setBlockData(i1, j1, k1, getRandomCarvedPumpkin(random), false);
             }
         }
