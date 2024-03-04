@@ -365,14 +365,14 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
         if (this.random.nextInt(4) == 0) {
             k1 = k + this.random.nextInt(16) + 8;
-            l1 = this.random.nextInt(128);
+            l1 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             i2 = l + this.random.nextInt(16) + 8;
             (new WorldGenLakes173(BlockConstants.SOURCE_WATER)).populate(blockAccess, this.random, k1, l1, i2);
         }
 
         if (this.random.nextInt(8) == 0) {
             k1 = k + this.random.nextInt(16) + 8;
-            l1 = this.random.nextInt(this.random.nextInt(120) + 8);
+            l1 = this.random.nextInt(this.random.nextInt(blockAccess.getTotalHeight() - 8) + 8) + blockAccess.getMinHeight();
             i2 = l + this.random.nextInt(16) + 8;
             if (l1 < 64 || this.random.nextInt(10) == 0) {
                 (new WorldGenLakes173(BlockConstants.SOURCE_LAVA)).populate(blockAccess, this.random, k1, l1, i2);
@@ -383,70 +383,70 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
         for (k1 = 0; k1 < 8; ++k1) {
             l1 = k + this.random.nextInt(16) + 8;
-            i2 = this.random.nextInt(128);
+            i2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16) + 8;
             (new WorldGenDungeons173()).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 10; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(128);
+            i2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenClay173(32)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 20; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(128);
+            i2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.DIRT, 32)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 10; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(128);
+            i2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.GRAVEL, 32)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 20; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(128);
+            i2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.COAL_ORE, 16)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 20; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(64);
+            i2 = this.random.nextInt(64 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.IRON_ORE, 8)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 2; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(32);
+            i2 = this.random.nextInt(32 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.GOLD_ORE, 8)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 8; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(16);
+            i2 = this.random.nextInt(16 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.REDSTONE_ORE, 7)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 1; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(16);
+            i2 = this.random.nextInt(16 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.DIAMOND_ORE, 7)).populate(blockAccess, this.random, l1, i2, j2);
         }
 
         for (k1 = 0; k1 < 1; ++k1) {
             l1 = k + this.random.nextInt(16);
-            i2 = this.random.nextInt(16) + this.random.nextInt(16);
+            i2 = (this.random.nextInt(16 - blockAccess.getMinHeight()) + blockAccess.getMinHeight()) + this.random.nextInt(16);
             j2 = l + this.random.nextInt(16);
             (new WorldGenMinable173(BlockConstants.LAPIS_ORE, 6)).populate(blockAccess, this.random, l1, i2, j2);
         }
@@ -520,7 +520,7 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
         for (j2 = 0; j2 < b0; ++j2) {
             k2 = k + this.random.nextInt(16) + 8;
-            i3 = this.random.nextInt(128);
+            i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
             (new WorldGenFlowers173(BlockConstants.DANDELION)).populate(blockAccess, this.random, k2, i3, l2);
         }
@@ -551,14 +551,14 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
         int k3;
 
         for (k2 = 0; k2 < b1; ++k2) {
-            BlockData b2 = BlockConstants.GRASS;
+            BlockData b2 = BlockConstants.SHORT_GRASS;
 
             if (biomebase == BiomeBase173.RAINFOREST && this.random.nextInt(3) != 0) {
                 b2 = BlockConstants.FERN;
             }
 
             l2 = k + this.random.nextInt(16) + 8;
-            k3 = this.random.nextInt(128);
+            k3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j3 = l + this.random.nextInt(16) + 8;
             (new WorldGenGrass173(b2)).populate(blockAccess, this.random, l2, k3, j3);
         }
@@ -570,42 +570,42 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
         for (k2 = 0; k2 < b1; ++k2) {
             i3 = k + this.random.nextInt(16) + 8;
-            l2 = this.random.nextInt(128);
+            l2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             k3 = l + this.random.nextInt(16) + 8;
             (new WorldGenDeadBush173(BlockConstants.DEAD_BUSH)).populate(blockAccess, this.random, i3, l2, k3);
         }
 
         if (this.random.nextInt(2) == 0) {
             k2 = k + this.random.nextInt(16) + 8;
-            i3 = this.random.nextInt(128);
+            i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
             (new WorldGenFlowers173(BlockConstants.POPPY)).populate(blockAccess, this.random, k2, i3, l2);
         }
 
         if (this.random.nextInt(4) == 0) {
             k2 = k + this.random.nextInt(16) + 8;
-            i3 = this.random.nextInt(128);
+            i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
             (new WorldGenFlowers173(BlockConstants.BROWN_MUSHROOM)).populate(blockAccess, this.random, k2, i3, l2);
         }
 
         if (this.random.nextInt(8) == 0) {
             k2 = k + this.random.nextInt(16) + 8;
-            i3 = this.random.nextInt(128);
+            i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
             (new WorldGenFlowers173(BlockConstants.RED_MUSHROOM)).populate(blockAccess, this.random, k2, i3, l2);
         }
 
         for (k2 = 0; k2 < 10; ++k2) {
             i3 = k + this.random.nextInt(16) + 8;
-            l2 = this.random.nextInt(128);
+            l2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             k3 = l + this.random.nextInt(16) + 8;
             (new WorldGenReed173()).populate(blockAccess, this.random, i3, l2, k3);
         }
 
         if (this.random.nextInt(32) == 0) {
             k2 = k + this.random.nextInt(16) + 8;
-            i3 = this.random.nextInt(128);
+            i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
             (new WorldGenPumpkin173()).populate(blockAccess, this.random, k2, i3, l2);
         }
@@ -617,21 +617,21 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
         for (i3 = 0; i3 < k2; ++i3) {
             l2 = k + this.random.nextInt(16) + 8;
-            k3 = this.random.nextInt(128);
+            k3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             j3 = l + this.random.nextInt(16) + 8;
             (new WorldGenCactus173()).populate(blockAccess, this.random, l2, k3, j3);
         }
 
         for (i3 = 0; i3 < 50; ++i3) {
             l2 = k + this.random.nextInt(16) + 8;
-            k3 = this.random.nextInt(this.random.nextInt(120) + 8);
+            k3 = this.random.nextInt(this.random.nextInt(blockAccess.getTotalHeight() - 8) + 8) + blockAccess.getMinHeight();
             j3 = l + this.random.nextInt(16) + 8;
             (new WorldGenLiquids173(BlockConstants.SOURCE_WATER)).populate(blockAccess, this.random, l2, k3, j3);
         }
 
         for (i3 = 0; i3 < 20; ++i3) {
             l2 = k + this.random.nextInt(16) + 8;
-            k3 = this.random.nextInt(this.random.nextInt(this.random.nextInt(112) + 8) + 8);
+            k3 = this.random.nextInt(this.random.nextInt(this.random.nextInt(blockAccess.getTotalHeight() - 8 - 8) + 8) + 8) + blockAccess.getMinHeight();
             j3 = l + this.random.nextInt(16) + 8;
             (new WorldGenLiquids173(BlockConstants.SOURCE_LAVA)).populate(blockAccess, this.random, l2, k3, j3);
         }
@@ -647,7 +647,7 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
 
                 Material below;
 
-                if (d1 < 0.5D && l3 > 0 && l3 < 128 && blockAccess.getType(i3, l3, l2).isAir() && LegacyUtil173.Material_isSolid((below = blockAccess.getType(i3, l3 - 1, l2))) && below != Material.ICE) {
+                if (d1 < 0.5D && l3 > blockAccess.getMinHeight() && l3 < (blockAccess.getMaxHeight() + 1) && blockAccess.getType(i3, l3, l2).isAir() && LegacyUtil173.Material_isSolid((below = blockAccess.getType(i3, l3 - 1, l2))) && below != Material.ICE) {
                     blockAccess.setBlockData(i3, l3, l2, BlockConstants.SNOW, false);
                     if (below == Material.GRASS_BLOCK) {
                         blockAccess.setBlockData(i3, l3 - 1, l2, BlockConstants.SNOWY_GRASS_BLOCK, false);

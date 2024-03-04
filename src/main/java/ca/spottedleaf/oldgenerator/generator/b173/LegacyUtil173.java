@@ -10,9 +10,6 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 
 public final class LegacyUtil173 {
-
-    public static final int WORLD_HEIGHT = 128;
-
     // Source code for b173 server can be found here: https://github.com/Bukkit/mc-dev/tree/1a792ed860ebe2c6d4c40c52f3bc7b9e0789ca23
 
     // NOTE: The following methods are supposed to mirror beta 1.7.3 behaviour! They are not guaranteed to mirror
@@ -54,7 +51,7 @@ public final class LegacyUtil173 {
         NON_BUILDABLE_MATERIALS.add(Material.RED_MUSHROOM);
         NON_BUILDABLE_MATERIALS.add(Material.BROWN_MUSHROOM);
         NON_BUILDABLE_MATERIALS.add(Material.DEAD_BUSH);
-        NON_BUILDABLE_MATERIALS.add(Material.GRASS);
+        NON_BUILDABLE_MATERIALS.add(Material.SHORT_GRASS);
         NON_BUILDABLE_MATERIALS.add(Material.FERN);
         NON_BUILDABLE_MATERIALS.addAll(BlockConstants.SAPLINGS);
         NON_BUILDABLE_MATERIALS.add(Material.WHEAT);
@@ -89,7 +86,7 @@ public final class LegacyUtil173 {
         NOT_Block_b.addAll(BlockConstants.FLOWERS);
         NOT_Block_b.add(Material.WHEAT);
         NOT_Block_b.add(Material.DEAD_BUSH);
-        NOT_Block_b.add(Material.GRASS);
+        NOT_Block_b.add(Material.SHORT_GRASS);
         NOT_Block_b.add(Material.FERN);
         NOT_Block_b.add(Material.RED_MUSHROOM);
         NOT_Block_b.add(Material.BROWN_MUSHROOM);
@@ -176,8 +173,8 @@ public final class LegacyUtil173 {
         BlockFire_a.put(Material.TNT, 15);
         BlockFire_b.put(Material.TNT, 100);
 
-        BlockFire_a.put(Material.GRASS, 60);
-        BlockFire_b.put(Material.GRASS, 100);
+        BlockFire_a.put(Material.SHORT_GRASS, 60);
+        BlockFire_b.put(Material.SHORT_GRASS, 100);
         BlockFire_a.put(Material.FERN, 60);
         BlockFire_b.put(Material.FERN, 100);
 
@@ -206,7 +203,7 @@ public final class LegacyUtil173 {
         NOT_Block_a.addAll(BlockConstants.FLOWERS);
         NOT_Block_a.add(Material.WHEAT);
         NOT_Block_a.add(Material.DEAD_BUSH);
-        NOT_Block_a.add(Material.GRASS);
+        NOT_Block_a.add(Material.SHORT_GRASS);
         NOT_Block_a.add(Material.FERN);
         NOT_Block_a.add(Material.RED_MUSHROOM);
         NOT_Block_a.add(Material.BROWN_MUSHROOM);
@@ -281,7 +278,7 @@ public final class LegacyUtil173 {
 
     public static boolean BlockFlower_f(final BlockAccess world, final int x, final int y, final int z, final Material type) {
         if (type == Material.RED_MUSHROOM || type == Material.BROWN_MUSHROOM) {
-            return y >= 0 && y < WORLD_HEIGHT ? world.getLightLevel(x, y, z) < 13 && BlockFlower_c(type, world.getType(x, y - 1, z)) : false;
+            return y >= world.getMinHeight() && y < (world.getMaxHeight() + 1) ? world.getLightLevel(x, y, z) < 13 && BlockFlower_c(type, world.getType(x, y - 1, z)) : false;
         }
 
         // default
@@ -341,7 +338,7 @@ public final class LegacyUtil173 {
             return !World_e(world, x, y - 1, z) ? false : Material_isReplacable(world.getType(x, y, z));
         }
         if (BlockConstants.isDoor(material)) {
-            return y >= (WORLD_HEIGHT - 1) ? false : World_e(world, x, y - 1, z) && Material_isReplacable(world.getType(x, y, z)) && Material_isReplacable(world.getType(x, y + 1, z));
+            return y >= world.getMaxHeight() ? false : World_e(world, x, y - 1, z) && Material_isReplacable(world.getType(x, y, z)) && Material_isReplacable(world.getType(x, y + 1, z));
         }
         if (material == Material.FIRE) {
             if (World_e(world, x, y - 1, z)) {

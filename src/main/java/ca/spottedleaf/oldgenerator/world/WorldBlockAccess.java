@@ -75,7 +75,12 @@ public final class WorldBlockAccess implements BlockAccess {
     }
 
     @Override
+    public int getMinHeight() {
+        return 0;
+    }
+
+    @Override
     public int getMaxHeight() {
-        return this.world.getMaxHeight();
+        return 127;
     }
 }

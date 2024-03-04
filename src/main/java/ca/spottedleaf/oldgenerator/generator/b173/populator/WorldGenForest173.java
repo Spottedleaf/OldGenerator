@@ -15,7 +15,7 @@ public class WorldGenForest173 extends WorldGenerator173 {
         int l = random.nextInt(3) + 5;
         boolean flag = true;
 
-        if (centerY >= 1 && centerY + l + 1 <= LegacyUtil173.WORLD_HEIGHT) {
+        if (centerY >= (world.getMinHeight() + 1) && centerY + l + 1 <= (world.getMaxHeight() + 1)) {
             int i1;
             int j1;
             int k1;
@@ -35,7 +35,7 @@ public class WorldGenForest173 extends WorldGenerator173 {
 
                 for (j1 = centerX - b0; j1 <= centerX + b0 && flag; ++j1) {
                     for (k1 = centerZ - b0; k1 <= centerZ + b0 && flag; ++k1) {
-                        if (i1 >= 0 && i1 < LegacyUtil173.WORLD_HEIGHT) {
+                        if (i1 >= world.getMinHeight() && i1 < (world.getMaxHeight() + 1)) {
                             type = world.getType(j1, i1, k1);
                             if (!BlockConstants.isAir(type) && !BlockConstants.isLeaves(type)) {
                                 flag = false;

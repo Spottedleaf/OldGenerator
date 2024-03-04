@@ -38,7 +38,7 @@ public enum BiomeBase173 {
     DESERT(Biome.DESERT, BlockConstants.SAND, BlockConstants.SAND),
     PLAINS(Biome.PLAINS),
     ICE_DESERT(Biome.DESERT, BlockConstants.SAND, BlockConstants.SAND),
-    TUNDRA(Biome.SNOWY_TUNDRA),
+    TUNDRA(Biome.SNOWY_PLAINS),
     HELL(Biome.NETHER_WASTES),
     SKY(Biome.THE_VOID);
 

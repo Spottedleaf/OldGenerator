@@ -19,7 +19,7 @@ public class WorldGenDeadBush173 extends WorldGenerator173 {
     public boolean populate(BlockAccess world, Random random, int centerX, int centerY, int centerZ) {
         Material l;
 
-        for (boolean flag = false; (BlockConstants.isAir(l = world.getType(centerX, centerY, centerZ)) || BlockConstants.isLeaves(l)) && centerY > 0; --centerY) {
+        for (boolean flag = false; (BlockConstants.isAir(l = world.getType(centerX, centerY, centerZ)) || BlockConstants.isLeaves(l)) && centerY > world.getMinHeight(); --centerY) {
             ;
         }
 

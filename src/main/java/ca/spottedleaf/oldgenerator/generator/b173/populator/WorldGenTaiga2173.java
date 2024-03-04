@@ -18,7 +18,7 @@ public class WorldGenTaiga2173 extends WorldGenerator173 {
         int k1 = 2 + random.nextInt(2);
         boolean flag = true;
 
-        if (centerY >= 1 && centerY + l + 1 <= 128) {
+        if (centerY >= (world.getMinHeight() + 1) && centerY + l + 1 <= (world.getMaxHeight() + 1)) {
             int l1;
             int i2;
             int j2;
@@ -36,7 +36,7 @@ public class WorldGenTaiga2173 extends WorldGenerator173 {
 
                 for (i2 = centerX - k2; i2 <= centerX + k2 && flag; ++i2) {
                     for (int l2 = centerZ - k2; l2 <= centerZ + k2 && flag; ++l2) {
-                        if (l1 >= 0 && l1 < 128) {
+                        if (l1 >= world.getMinHeight() && l1 < (world.getMaxHeight() + 1)) {
                             type = world.getType(i2, l1, l2);
                             if (!BlockConstants.isAir(type) && !BlockConstants.isLeaves(type)) {
                                 flag = false;
@@ -52,7 +52,7 @@ public class WorldGenTaiga2173 extends WorldGenerator173 {
                 return false;
             } else {
                 type = world.getType(centerX, centerY - 1, centerZ);
-                if ((type == Material.GRASS_BLOCK || type == Material.DIRT) && centerY < 128 - l - 1) {
+                if ((type == Material.GRASS_BLOCK || type == Material.DIRT) && centerY < (world.getMaxHeight() + 1) - l - 1) {
                     world.setBlockData(centerX, centerY - 1, centerZ, BlockConstants.DIRT, false);
                     k2 = random.nextInt(2);
                     i2 = 1;

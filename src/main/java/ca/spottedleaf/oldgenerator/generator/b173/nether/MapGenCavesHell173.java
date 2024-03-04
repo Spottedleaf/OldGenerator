@@ -4,8 +4,8 @@ import ca.spottedleaf.oldgenerator.generator.b173.LegacyUtil173;
 import ca.spottedleaf.oldgenerator.generator.b173.MapGenBase173;
 import ca.spottedleaf.oldgenerator.generator.b173.MathHelper173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
+import ca.spottedleaf.oldgenerator.world.WorldBlockAccess;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import java.util.Random;
 
@@ -13,11 +13,11 @@ public class MapGenCavesHell173 extends MapGenBase173 {
 
     public MapGenCavesHell173() {}
 
-    protected void a(int i, int j, ChunkGenerator.ChunkData chunkData, double d0, double d1, double d2) {
-        this.a(i, j, chunkData, d0, d1, d2, 1.0F + this.random.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+    protected void a(WorldBlockAccess world, int i, int j, ChunkGenerator.ChunkData chunkData, double d0, double d1, double d2) {
+        this.a(world, i, j, chunkData, d0, d1, d2, 1.0F + this.random.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
     }
 
-    protected void a(int i, int j, ChunkGenerator.ChunkData chunkData, double d0, double d1, double d2, float f, float f1, float f2, int k, int l, double d3) {
+    protected void a(WorldBlockAccess world, int i, int j, ChunkGenerator.ChunkData chunkData, double d0, double d1, double d2, float f, float f1, float f2, int k, int l, double d3) {
         double d4 = (double) (i * 16 + 8);
         double d5 = (double) (j * 16 + 8);
         float f3 = 0.0F;
@@ -61,8 +61,8 @@ public class MapGenCavesHell173 extends MapGenBase173 {
             f4 += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.0F;
             f3 += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4.0F;
             if (!flag && k == j1 && f > 1.0F) {
-                this.a(i, j, chunkData, d0, d1, d2, random.nextFloat() * 0.5F + 0.5F, f1 - 1.5707964F, f2 / 3.0F, k, l, 1.0D);
-                this.a(i, j, chunkData, d0, d1, d2, random.nextFloat() * 0.5F + 0.5F, f1 + 1.5707964F, f2 / 3.0F, k, l, 1.0D);
+                this.a(world, i, j, chunkData, d0, d1, d2, random.nextFloat() * 0.5F + 0.5F, f1 - 1.5707964F, f2 / 3.0F, k, l, 1.0D);
+                this.a(world, i, j, chunkData, d0, d1, d2, random.nextFloat() * 0.5F + 0.5F, f1 + 1.5707964F, f2 / 3.0F, k, l, 1.0D);
                 return;
             }
 
@@ -164,7 +164,7 @@ public class MapGenCavesHell173 extends MapGenBase173 {
     }
 
     @Override
-    protected void generate(World world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {
+    protected void generate(WorldBlockAccess world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {
         int i1 = this.random.nextInt(this.random.nextInt(this.random.nextInt(10) + 1) + 1);
 
         if (this.random.nextInt(5) != 0) {
@@ -173,12 +173,12 @@ public class MapGenCavesHell173 extends MapGenBase173 {
 
         for (int j1 = 0; j1 < i1; ++j1) {
             double d0 = (double) (i * 16 + this.random.nextInt(16));
-            double d1 = (double) this.random.nextInt(128);
+            double d1 = (double) (this.random.nextInt(world.getMaxHeight() + 1 - world.getMinHeight()) + world.getMinHeight());
             double d2 = (double) (j * 16 + this.random.nextInt(16));
             int k1 = 1;
 
             if (this.random.nextInt(4) == 0) {
-                this.a(k, l, chunkData, d0, d1, d2);
+                this.a(world, k, l, chunkData, d0, d1, d2);
                 k1 += this.random.nextInt(4);
             }
 
@@ -187,7 +187,7 @@ public class MapGenCavesHell173 extends MapGenBase173 {
                 float f1 = (this.random.nextFloat() - 0.5F) * 2.0F / 8.0F;
                 float f2 = this.random.nextFloat() * 2.0F + this.random.nextFloat();
 
-                this.a(k, l, chunkData, d0, d1, d2, f2 * 2.0F, f, f1, 0, 0, 0.5D);
+                this.a(world, k, l, chunkData, d0, d1, d2, f2 * 2.0F, f, f1, 0, 0, 0.5D);
             }
         }
     }

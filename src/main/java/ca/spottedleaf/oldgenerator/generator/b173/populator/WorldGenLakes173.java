@@ -19,7 +19,7 @@ public class WorldGenLakes173 extends WorldGenerator173 {
     public boolean populate(BlockAccess world, Random random, int centerX, int centerY, int centerZ) {
         centerX -= 8;
 
-        for (centerZ -= 8; centerY > 0 && BlockConstants.isAir(world.getType(centerX, centerY, centerZ)); --centerY) {
+        for (centerZ -= 8; centerY > world.getMinHeight() && BlockConstants.isAir(world.getType(centerX, centerY, centerZ)); --centerY) {
             ;
         }
 

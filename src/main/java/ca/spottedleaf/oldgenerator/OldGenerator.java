@@ -21,7 +21,8 @@ public final class OldGenerator extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new LegacyPopulateHack(), this);
-        Bukkit.getPluginManager().registerEvents(new SkyGenerationListener(), this);
+        Bukkit.getPluginManager().registerEvents(new SkyGenerationListener(this), this);
+        this.setupMetrics();
     }
 
     @Override
@@ -34,6 +35,8 @@ public final class OldGenerator extends JavaPlugin {
             return null;
         }
         // TODO configurable
-        return new Beta173ChunkGenerator(id.equalsIgnoreCase("sb173"));
+        final boolean skylands = id.equalsIgnoreCase("sb173");
+        this.getLogger().info("Registering world generator for world '" + worldName + "' with configuration: {skylands:" + skylands + "}");
+        return new Beta173ChunkGenerator(skylands);
     }
 }

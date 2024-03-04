@@ -4,8 +4,8 @@ import ca.spottedleaf.oldgenerator.generator.b173.LegacyUtil173;
 import ca.spottedleaf.oldgenerator.generator.b173.MapGenBase173;
 import ca.spottedleaf.oldgenerator.generator.b173.MathHelper173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
+import ca.spottedleaf.oldgenerator.world.WorldBlockAccess;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import java.util.Random;
 
@@ -178,7 +178,7 @@ public class MapGenCaves173 extends MapGenBase173 {
     }
 
     @Override
-    protected void generate(World world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {
+    protected void generate(WorldBlockAccess world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {
         int i1 = this.random.nextInt(this.random.nextInt(this.random.nextInt(40) + 1) + 1);
 
         if (this.random.nextInt(15) != 0) {
@@ -187,7 +187,7 @@ public class MapGenCaves173 extends MapGenBase173 {
 
         for (int j1 = 0; j1 < i1; ++j1) {
             double d0 = (double) (i * 16 + this.random.nextInt(16));
-            double d1 = (double) this.random.nextInt(this.random.nextInt(120) + 8);
+            double d1 = (double) (this.random.nextInt(this.random.nextInt(world.getTotalHeight() - 8) + 8) + world.getMinHeight());
             double d2 = (double) (j * 16 + this.random.nextInt(16));
             int k1 = 1;
 

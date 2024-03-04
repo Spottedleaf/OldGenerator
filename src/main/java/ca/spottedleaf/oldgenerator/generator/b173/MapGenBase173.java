@@ -1,5 +1,6 @@
 package ca.spottedleaf.oldgenerator.generator.b173;
 
+import ca.spottedleaf.oldgenerator.world.WorldBlockAccess;
 import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import java.util.Random;
@@ -17,14 +18,16 @@ public class MapGenBase173 {
         long l = this.random.nextLong() / 2L * 2L + 1L;
         long i1 = this.random.nextLong() / 2L * 2L + 1L;
 
+        WorldBlockAccess worldBlockAccess = new WorldBlockAccess(world);
+
         for (int j1 = cx - k; j1 <= cx + k; ++j1) {
             for (int k1 = cz - k; k1 <= cz + k; ++k1) {
                 this.random.setSeed((long) j1 * l + (long) k1 * i1 ^ world.getSeed());
-                this.generate(world, j1, k1, cx, cz, chunkData);
+                this.generate(worldBlockAccess, j1, k1, cx, cz, chunkData);
             }
         }
     }
 
-    protected void generate(World world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {}
+    protected void generate(WorldBlockAccess world, int i, int j, int k, int l, ChunkGenerator.ChunkData chunkData) {}
 
 }

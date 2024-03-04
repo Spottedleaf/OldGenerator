@@ -1,6 +1,8 @@
 package ca.spottedleaf.oldgenerator.generator.b173.listener;
 
+import ca.spottedleaf.oldgenerator.OldGenerator;
 import ca.spottedleaf.oldgenerator.generator.b173.Beta173ChunkGenerator;
+import ca.spottedleaf.oldgenerator.util.FoliaSupport;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
@@ -18,7 +20,13 @@ public final class SkyGenerationListener implements Listener {
         return ((generator instanceof Beta173ChunkGenerator) && ((Beta173ChunkGenerator)generator).isSkyLands);
     }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    private final OldGenerator plugin;
+
+    public SkyGenerationListener(final OldGenerator plugin) {
+        this.plugin = plugin;
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onWorldInit(final WorldInitEvent event) {
         final World world = event.getWorld();
 
@@ -26,13 +34,15 @@ public final class SkyGenerationListener implements Listener {
             return;
         }
 
-        world.setStorm(false);
-        world.setThundering(false);
-        world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, Boolean.FALSE);
+        FoliaSupport.runGlobalScheduler(this.plugin, () -> {
+            world.setStorm(false);
+            world.setThundering(false);
+            world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, Boolean.FALSE);
 
-        if (world.getTime() != (6 * 1000)) {
-            world.setTime(6 * 1000);
-        }
+            if (world.getTime() != (6 * 1000)) {
+                world.setTime(6 * 1000);
+            }
+        });
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)

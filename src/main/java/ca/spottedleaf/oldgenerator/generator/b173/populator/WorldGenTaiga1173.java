@@ -18,7 +18,7 @@ public class WorldGenTaiga1173 extends WorldGenerator173 {
         int k1 = 1 + random.nextInt(j1 + 1);
         boolean flag = true;
 
-        if (centerY >= 1 && centerY + l + 1 <= 128) {
+        if (centerY >= (world.getMinHeight() + 1) && centerY + l + 1 <= (world.getMaxHeight() + 1)) {
             int l1;
             int i2;
             int j2;
@@ -37,7 +37,7 @@ public class WorldGenTaiga1173 extends WorldGenerator173 {
 
                 for (i2 = centerX - l2; i2 <= centerX + l2 && flag; ++i2) {
                     for (j2 = centerZ - l2; j2 <= centerZ + l2 && flag; ++j2) {
-                        if (l1 >= 0 && l1 < 128) {
+                        if (l1 >= world.getMinHeight() && l1 < (world.getMaxHeight() + 1)) {
                             type = world.getType(i2, l1, j2);
                             if (!BlockConstants.isAir(type) && !BlockConstants.isLeaves(type)) {
                                 flag = false;

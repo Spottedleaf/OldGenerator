@@ -15,7 +15,7 @@ public class WorldGenTrees173 extends WorldGenerator173 {
         int l = random.nextInt(3) + 4;
         boolean flag = true;
 
-        if (centerY >= 1 && centerY + l + 1 <= 128) {
+        if (centerY >= (world.getMinHeight() + 1) && centerY + l + 1 <= (world.getMaxHeight() + 1)) {
             int i1;
             int j1;
             int k1;
@@ -35,7 +35,7 @@ public class WorldGenTrees173 extends WorldGenerator173 {
 
                 for (j1 = centerX - b0; j1 <= centerX + b0 && flag; ++j1) {
                     for (k1 = centerZ - b0; k1 <= centerZ + b0 && flag; ++k1) {
-                        if (i1 >= 0 && i1 < 128) {
+                        if (i1 >= world.getMinHeight() && i1 < (world.getMaxHeight() + 1)) {
                             type = world.getType(j1, i1, k1);
                             if (!BlockConstants.isAir(type) && !BlockConstants.isLeaves(type)) {
                                 flag = false;
@@ -51,7 +51,7 @@ public class WorldGenTrees173 extends WorldGenerator173 {
                 return false;
             } else {
                 type = world.getType(centerX, centerY - 1, centerZ);
-                if ((type == Material.GRASS_BLOCK || type == Material.DIRT) && centerY < 128 - l - 1) {
+                if ((type == Material.GRASS_BLOCK || type == Material.DIRT) && centerY < (world.getMaxHeight() + 1) - l - 1) {
                     world.setBlockData(centerX, centerY - 1, centerZ, BlockConstants.DIRT, false);
 
                     int i2;
