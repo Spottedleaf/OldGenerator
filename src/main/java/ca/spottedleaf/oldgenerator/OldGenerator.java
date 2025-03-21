@@ -18,7 +18,7 @@ public final class OldGenerator extends JavaPlugin {
     	    Class.forName("org.bstats.bukkit.Metrics");
     	    final Metrics metrics = new Metrics(this, 7761);
     	} catch (ClassNotFoundException e) {
-    		System.err.println("bstats could not be found");
+    		getLogger().warning("Bstats could not be found.");
     	}
     }
 
