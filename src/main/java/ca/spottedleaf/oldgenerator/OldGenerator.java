@@ -14,8 +14,12 @@ public final class OldGenerator extends JavaPlugin {
     public void onLoad() {}
 
     protected void setupMetrics() {
-        final Metrics metrics = new Metrics(this, 7761);
-        // TODO custom charts?
+    	try {
+    	    Class.forName("org.bstats.bukkit.Metrics");
+    	    final Metrics metrics = new Metrics(this, 7761);
+    	} catch (ClassNotFoundException e) {
+    		System.err.println("bstats could not be found");
+    	}
     }
 
     @Override
