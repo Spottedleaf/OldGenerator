@@ -29,7 +29,7 @@ public enum BiomeBase173 {
     },
     SAVANNA(Biome.SAVANNA),
     SHRUBLAND(Biome.PLAINS),
-    TAIGA(Biome.TAIGA) {
+    TAIGA(Biome.SNOWY_TAIGA) {
         @Override
         public WorldGenerator173 getTreeGenerator(Random random) {
             return (random.nextInt(3) == 0 ? new WorldGenTaiga1173() : new WorldGenTaiga2173());
