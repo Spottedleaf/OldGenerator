@@ -10,12 +10,12 @@ see the How to Use section for proper configuration).
 ### Seed `worstseedever`
 
 ### Beta 1.7.3
-![Overworld Generation](https://i.imgur.com/AS4aeoK.png)
-![Nether Generation](https://i.imgur.com/7lOgLRC.png)
+![Overworld Generation](./assests/AS4aeoK.png)
+![Nether Generation](./assests/7lOgLRC.png)
 
 ### OldGenerator on Minecraft 1.16.4
-![Overworld Generation](https://i.imgur.com/0ycd5K0.png)
-![Nether Generation](https://i.imgur.com/u5OTgPZ.png)
+![Overworld Generation](./assests/0ycd5K0.png)
+![Nether Generation](./assests/u5OTgPZ.png)
 
 ### Differences
 #### Overworld
