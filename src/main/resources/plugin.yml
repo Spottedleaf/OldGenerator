@@ -2,7 +2,7 @@ main: ca.spottedleaf.oldgenerator.OldGenerator
 version: ${version}
 name: OldGenerator
 load: STARTUP
-api-version: "1.20"
+api-version: "1.21"
 authors: [Spottedleaf]
 description: Provides Beta 1.7.3 world generator for modern versions of Minecraft.
 folia-supported: true
