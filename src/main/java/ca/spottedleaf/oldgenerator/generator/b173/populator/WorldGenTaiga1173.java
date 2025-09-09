@@ -2,6 +2,7 @@ package ca.spottedleaf.oldgenerator.generator.b173.populator;
 
 import ca.spottedleaf.oldgenerator.generator.b173.LegacyUtil173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
+import ca.spottedleaf.oldgenerator.util.LeafDistanceCalculator;
 import ca.spottedleaf.oldgenerator.world.BlockAccess;
 import org.bukkit.Material;
 import java.util.Random;
@@ -17,6 +18,7 @@ public class WorldGenTaiga1173 extends WorldGenerator173 {
         int j1 = l - i1;
         int k1 = 1 + random.nextInt(j1 + 1);
         boolean flag = true;
+        LeafDistanceCalculator leafDistanceCalculator = new LeafDistanceCalculator();
 
         if (centerY >= (world.getMinHeight() + 1) && centerY + l + 1 <= (world.getMaxHeight() + 1)) {
             int l1;
@@ -81,8 +83,11 @@ public class WorldGenTaiga1173 extends WorldGenerator173 {
                         type = world.getType(centerX, centerY + i2, centerZ);
                         if (BlockConstants.isAir(type) || BlockConstants.isLeaves(type)) {
                             world.setBlockData(centerX, centerY + i2, centerZ, BlockConstants.SPRUCE_LOG, false);
+                            leafDistanceCalculator.addLog(centerX, centerY + i2, centerZ);
                         }
                     }
+
+                    leafDistanceCalculator.update(world);
 
                     return true;
                 } else {

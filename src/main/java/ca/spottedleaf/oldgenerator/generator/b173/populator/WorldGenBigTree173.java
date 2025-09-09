@@ -2,6 +2,7 @@ package ca.spottedleaf.oldgenerator.generator.b173.populator;
 
 import ca.spottedleaf.oldgenerator.generator.b173.MathHelper173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
+import ca.spottedleaf.oldgenerator.util.LeafDistanceCalculator;
 import ca.spottedleaf.oldgenerator.world.BlockAccess;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
@@ -165,7 +166,7 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
         }
     }
 
-    private void a(int[] aint, int[] aint1, BlockData i) {
+    private void a(int[] aint, int[] aint1, BlockData i, LeafDistanceCalculator leafDistanceCalculator) {
         int[] aint2 = new int[] { 0, 0, 0};
         byte b0 = 0;
 
@@ -199,6 +200,9 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
                 aint3[b2] = MathHelper173.floor((double) aint[b2] + (double) j * d0 + 0.5D);
                 aint3[b3] = MathHelper173.floor((double) aint[b3] + (double) j * d1 + 0.5D);
                 this.world.setBlockData(aint3[0], aint3[1], aint3[2], i, false);
+                if (leafDistanceCalculator != null) {
+                    leafDistanceCalculator.addLog(aint3[0], aint3[1], aint3[2]);
+                }
             }
         }
     }
@@ -219,7 +223,7 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
         return (double) i >= (double) this.e * 0.2D;
     }
 
-    private void c() {
+    private void c(LeafDistanceCalculator leafDistanceCalculator) {
         int i = this.pos[0];
         int j = this.pos[1];
         int k = this.pos[1] + this.f;
@@ -227,21 +231,21 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
         int[] aint = new int[] { i, j, l};
         int[] aint1 = new int[] { i, k, l};
 
-        this.a(aint, aint1, BlockConstants.OAK_LOG);
+        this.a(aint, aint1, BlockConstants.OAK_LOG, leafDistanceCalculator);
         if (this.l == 2) {
             ++aint[0];
             ++aint1[0];
-            this.a(aint, aint1, BlockConstants.OAK_LOG);
+            this.a(aint, aint1, BlockConstants.OAK_LOG, leafDistanceCalculator);
             ++aint[2];
             ++aint1[2];
-            this.a(aint, aint1, BlockConstants.OAK_LOG);
+            this.a(aint, aint1, BlockConstants.OAK_LOG, leafDistanceCalculator);
             aint[0] += -1;
             aint1[0] += -1;
-            this.a(aint, aint1, BlockConstants.OAK_LOG);
+            this.a(aint, aint1, BlockConstants.OAK_LOG, leafDistanceCalculator);
         }
     }
 
-    private void placeLogs() {
+    private void placeLogs(LeafDistanceCalculator leafDistanceCalculator) {
         int i = 0;
         int j = this.o.length;
 
@@ -253,7 +257,7 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
             int k = aint[1] - this.pos[1];
 
             if (this.c(k)) {
-                this.a(aint, aint2, BlockConstants.OAK_LOG);
+                this.a(aint, aint2, BlockConstants.OAK_LOG, leafDistanceCalculator);
             }
         }
     }
@@ -354,10 +358,12 @@ public class WorldGenBigTree173 extends WorldGenerator173 {
         if (!this.d()) {
             return false;
         } else {
+            LeafDistanceCalculator leafDistanceCalculator = new LeafDistanceCalculator();
             this.a();
             this.b();
-            this.c();
-            this.placeLogs();
+            this.c(leafDistanceCalculator);
+            this.placeLogs(leafDistanceCalculator);
+            leafDistanceCalculator.update(this.world);
             return true;
         }
     }

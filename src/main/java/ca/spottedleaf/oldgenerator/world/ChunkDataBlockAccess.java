@@ -22,6 +22,11 @@ public final class ChunkDataBlockAccess implements BlockAccess {
     }
 
     @Override
+    public boolean isLoaded(final int chunkX, final int chunkZ) {
+        return (chunkX | chunkZ) == 0;
+    }
+
+    @Override
     public Material getType(final int x, final int y, final int z) {
         checkCoordinates(x, y, z);
         return this.chunkData.getType(x, y, z);

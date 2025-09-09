@@ -15,6 +15,11 @@ public final class WorldBlockAccess implements BlockAccess {
     }
 
     @Override
+    public boolean isLoaded(final int chunkX, final int chunkZ) {
+        return this.world.isChunkLoaded(chunkX, chunkZ);
+    }
+
+    @Override
     public Material getType(final int x, final int y, final int z) {
         return this.world.getBlockAt(x, y, z).getType();
     }

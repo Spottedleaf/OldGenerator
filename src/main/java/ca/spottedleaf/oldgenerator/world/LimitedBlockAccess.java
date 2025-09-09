@@ -60,6 +60,10 @@ public final class LimitedBlockAccess implements BlockAccess {
         this.chunks[index] = chunk;
     }
 
+    @Override
+    public boolean isLoaded(final int chunkX, final int chunkZ) {
+        return chunkX >= this.lowerX && chunkZ >= this.lowerZ && chunkX <= this.upperX && chunkZ <= this.upperZ;
+    }
 
     @Override
     public Material getType(final int x, final int y, final int z) {

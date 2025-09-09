@@ -7,6 +7,8 @@ import org.bukkit.block.data.BlockData;
 
 public interface BlockAccess {
 
+    public boolean isLoaded(final int chunkX, final int chunkZ);
+
     public Material getType(final int x, final int y, final int z);
 
     public void setType(final int x, final int y, final int z, final Material material);
